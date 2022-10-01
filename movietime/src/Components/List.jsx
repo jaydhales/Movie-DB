@@ -2,8 +2,9 @@ import React from "react";
 import { useContext } from "react";
 import { MovieContext } from "../Contexts/MovieContext";
 import LazyLoad from "react-lazy-load";
+import { Link } from "react-router-dom";
 
-const List = ({ movies, name }) => {
+const List = ({ movies, name, type }) => {
   const { results } = movies;
   const sample = [];
   const { imgUrl } = useContext(MovieContext);
@@ -19,7 +20,7 @@ const List = ({ movies, name }) => {
       <h2>{name}</h2>
       <div className="flex gap-4 m-4">
         {sample.map((el) => (
-          <div key={el.id} className="rounded w-48">
+          <Link to={`/${type}/${el.id}`} key={el.id} className="rounded w-48">
             <LazyLoad height={300} className="relative">
               <img
                 src={imgUrl + "w200" + el.poster_path}
@@ -33,7 +34,7 @@ const List = ({ movies, name }) => {
                 {el.title || el.name}
               </p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

@@ -19,21 +19,22 @@ const MovieContextProvider = ({ children }) => {
   const [topRated, setTopRated] = useState(template);
   const [upcoming, setUpcoming] = useState(template);
 
+  const fetchData = async (path) => {
+    const response = await axios.get(`https://api.themoviedb.org/3/${path}`, {
+      params: {
+        api_key: apiKey,
+      },
+    });
+
+    return response.data;
+  };
+
+  const fetchDetails = (path) => {
+    return fetchData(path);
+  };  
+
   useEffect(() => {
     async function runData() {
-      const fetchData = async (path) => {
-        const response = await axios.get(
-          `https://api.themoviedb.org/3/${path}`,
-          {
-            params: {
-              api_key: apiKey,
-            },
-          }
-        );
-
-        return response.data;
-      };
-
       setUpcoming({
         movie: await fetchData(`movie/upcoming`),
         tv: await fetchData(`tv/on_the_air`),
@@ -66,6 +67,7 @@ const MovieContextProvider = ({ children }) => {
         popular,
         topRated,
         upcoming,
+        fetchDetails,
       }}
     >
       {children}

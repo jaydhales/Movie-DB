@@ -10,10 +10,10 @@ const Movies = () => {
 
   return (
     <div className="">
-      <Trending movies={trending.tv} />
-      <List movies={popular.tv} name="Popular" />
-      <List movies={topRated.tv} name="Top Rated" />
-      <List movies={upcoming.tv} name="On The Air" />
+      <Trending movies={trending.tv} type='tv' />
+      <List movies={popular.tv} name="Popular" type='tv' />
+      <List movies={topRated.tv} name="Top Rated" type='tv' />
+      <List movies={upcoming.tv} name="On The Air" type='tv' />
     </div>
   );
 };

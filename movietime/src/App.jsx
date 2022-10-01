@@ -9,6 +9,7 @@ import Tvs from "./Routes/Home/Tvs.jsx";
 import NoMatch from "./Routes/NoMatch.jsx";
 import ExMovies from "./Routes/Explore/ExMovies.jsx";
 import ExTvs from "./Routes/Explore/ExTvs.jsx";
+import MovieDetails from "./Routes/MovieDetails.jsx";
 
 const App = () => {
   const location = useLocation();
@@ -33,7 +34,8 @@ const App = () => {
           <Route path="*" element={<NoMatch />} />
         </Route>
         <Route path="search" element={<Search />} />
-        
+        <Route path="movie/:id" element={<MovieDetails type="movie" />} />
+        <Route path="tv/:id" element={<MovieDetails type="tv" />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </div>
