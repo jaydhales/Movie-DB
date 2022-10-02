@@ -20,7 +20,7 @@ const List = ({ movies, name, type }) => {
       <h2>{name}</h2>
       <div className="flex gap-4 m-4">
         {sample.map((el) => (
-          <Link to={`/${type}/${el.id}`} key={el.id} className="rounded w-48">
+          <Link to={`/${type}/${el.id}`} key={el.id} className="rounded w-48 transition-all  hover:scale-105">
             <LazyLoad height={300} className="relative">
               <img
                 src={imgUrl + "w200" + el.poster_path}

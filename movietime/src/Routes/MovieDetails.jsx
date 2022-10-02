@@ -16,6 +16,8 @@ const MovieDetails = ({ type }) => {
     }
 
     getDetails();
+
+    
   }, []);
 
   console.log(details);

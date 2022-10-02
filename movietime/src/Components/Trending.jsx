@@ -3,8 +3,10 @@ import { useContext } from "react";
 import { MovieContext } from "../Contexts/MovieContext";
 import { Swiper, SwiperSlide } from "swiper/react";
 import LazyLoad from "react-lazy-load";
+import { Link } from "react-router-dom";
+import play from "../assets/play.png";
 
-const Trending = ({ movies }) => {
+const Trending = ({ movies, type }) => {
   const { imgUrl } = useContext(MovieContext);
   const { results } = movies;
 
@@ -18,15 +20,24 @@ const Trending = ({ movies }) => {
             <img
               src={imgUrl + "original/" + result.backdrop_path}
               alt=""
-              className="w-full h-full object-cover object-left-top"
+              className="w-full md:h-full object-cover md:object-left-top"
             />
           </LazyLoad>
 
           <div
             className="relative p-8 z-10 h-[150px] md:h-[400px] bg-gradient-to-r from-[#000] via-[#000a] 
-            to-[#0000]"
+            to-[#0000] transition-colors hover:bg-[#0005] group"
             id={result.id}
           >
+            <Link
+              to={`/${type}/${result.id}`}
+              className="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden group-hover:block transition hover:scale-105"
+            >
+              <img src={play} alt="play icon" />
+            </Link>
+
+            <div className="rounded">{}</div>
+
             <div
               className="grid z-10 h-full relative  text-white
               "
