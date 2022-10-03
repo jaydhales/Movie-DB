@@ -19,10 +19,14 @@ const MovieContextProvider = ({ children }) => {
   const [topRated, setTopRated] = useState(template);
   const [upcoming, setUpcoming] = useState(template);
 
-  const fetchData = async (path) => {
+  const ytBgUrl = (key) =>
+    `https://i.ytimg.com/vi_webp/${key}/maxresdefault.webp`;
+
+  const fetchData = async (path, extraParams = "") => {
     const response = await axios.get(`https://api.themoviedb.org/3/${path}`, {
       params: {
         api_key: apiKey,
+        append_to_response: extraParams,
       },
     });
 
@@ -31,7 +35,7 @@ const MovieContextProvider = ({ children }) => {
 
   const fetchDetails = (path) => {
     return fetchData(path);
-  };  
+  };
 
   useEffect(() => {
     async function runData() {
@@ -68,6 +72,7 @@ const MovieContextProvider = ({ children }) => {
         topRated,
         upcoming,
         fetchDetails,
+        ytBgUrl
       }}
     >
       {children}

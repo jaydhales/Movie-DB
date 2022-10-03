@@ -2,8 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
+@layer base {
+  .body {
+    @apply bg-[#191919] text-white min-h-screen max-w-full overflow-hidden;
+  }
+
+  .nav-container {
+    @apply py-12  h-screen w-[200px] fixed top-0 bg-[#212121] rounded-r-[45px] grid content-between;
+  }
+
+  .nav-container {
+    @apply text-center;
+  }
+
+  .logo {
+    @apply text-[#3DD2CC] font-black text-3xl font-['cursive'];
+  }
+
   .main-nav {
-    @apply grid gap-2 m-4;
+    @apply grid gap-2;
+  }
+
+  .main-nav a {
+    @apply w-full py-4;
+  }
+
+  .main-nav span {
+    @apply w-[90px] mx-auto flex gap-4 items-center;
+  }
+
+  .main-nav a.active {
+    @apply border-r-4 border-[#3DD2CC];
+  }
+
+  a {
+    @apply transition-all ease-in duration-500;
+  }
+
+  a.active {
+    @apply bg-[#3dd2cd5b] text-[#3DD2CC];
+  }
+
+  .play-icon {
+    @apply absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+  }
+
+  .trending {
+    @apply m-4 rounded-lg w-[calc(100vw-265px)];
+  }
+
+  .trending .play-icon {
+    @apply hidden transition group-hover:block  hover:scale-105;
+  }
+
+  main {
+    @apply ml-[200px] px-4 py-8;
+  }
+
+  .home header {
+    @apply flex items-center;
+  }
+
+  .switch {
+    @apply flex bg-[#212121] rounded-full;
+  }
+
+  .switch a {
+    @apply px-4 py-2 rounded-full;
+  }
+
+  .search {
+    @apply mx-4 flex-1;
+  }
+
+  .search input {
+    @apply w-full rounded-full bg-[#212121] py-4 px-8;
+  }
+
+  .trailer {
+    @apply relative w-full md:h-[334px];
   }
 }

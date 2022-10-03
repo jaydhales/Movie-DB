@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Switch from "../Components/Switch";
+import Search from "../Components/Search";
 
 const Home = () => {
   const content = [
@@ -8,9 +9,10 @@ const Home = () => {
     ["Tv Show", "/home/tv-show"],
   ];
   return (
-    <div className="flex-grow border-x border-grey">
-      <header>
+    <div className="home">
+      <header >
         <Switch content={content} />
+        <Search />
       </header>
       <Outlet />
     </div>

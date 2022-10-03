@@ -13,25 +13,25 @@ const Trending = ({ movies, type }) => {
   if (!results) return null;
 
   return (
-    <Swiper className="m-4 w-[calc(100vw-200px)] rounded-lg">
+    <Swiper className="trending">
       {results.map((result) => (
-        <SwiperSlide key={result.id} className="h-full">
+        <SwiperSlide key={result.id} className="h-full group ">
           <LazyLoad height={400} className="absolute w-full ">
             <img
               src={imgUrl + "original/" + result.backdrop_path}
               alt=""
-              className="w-full md:h-full object-cover md:object-left-top"
+              className="w-full md:h-full object-cover md:object-left-top transition group-hover:scale-105"
             />
           </LazyLoad>
 
           <div
             className="relative p-8 z-10 h-[150px] md:h-[400px] bg-gradient-to-r from-[#000] via-[#000a] 
-            to-[#0000] transition-colors hover:bg-[#0005] group"
+            to-[#0000] transition-colors hover:bg-[#0005]"
             id={result.id}
           >
             <Link
               to={`/${type}/${result.id}`}
-              className="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden group-hover:block transition hover:scale-105"
+              className="play-icon"
             >
               <img src={play} alt="play icon" />
             </Link>

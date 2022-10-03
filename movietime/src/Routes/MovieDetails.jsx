@@ -1,30 +1,44 @@
-import { useState } from "react";
-import { useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
+import Search from "../Components/Search";
 import { MovieContext } from "../Contexts/MovieContext";
+import LazyLoad from "react-lazy-load";
+import play from "../assets/play.png";
 
 const MovieDetails = ({ type }) => {
   const { id } = useParams();
+
   const [details, setDetails] = useState("");
-  const { fetchDetails } = useContext(MovieContext);
+  const { fetchDetails, ytBgUrl } = useContext(MovieContext);
 
   useEffect(() => {
     async function getDetails() {
-      const data = await fetchDetails(`${type}/${id}`);
+      const data = await fetchDetails(`${type}/${id}`, "credits,similar");
 
       setDetails(data);
     }
 
     getDetails();
-
-    
   }, []);
 
-  console.log(details);
-
   return (
-    <div>
-      {type}: {id}
+    <div className="details">
+      <Search />
+      <div className="trailer">
+        <LazyLoad className="w-full">
+          <>
+            <img
+              src={ytBgUrl("EGeJczJvWns")}
+              alt=""
+              className="w-full  md:h-[334px] object-cover rounded-lg"
+            />
+
+            <a href="#" className="play-icon">
+              <img src={play} alt="play icon" />
+            </a>
+          </>
+        </LazyLoad>
+      </div>
     </div>
   );
 };
